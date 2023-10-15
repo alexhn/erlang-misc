@@ -1,5 +1,5 @@
 -module(lib_misc).
--export([for/3, my_tuple_to_list / 1, my_time_func/1]).
+-export([for/3, my_tuple_to_list / 1, my_time_func/1, perms/1]).
 
 for(Max, Max, F) -> [F(Max)];
 for(I, Max, F) -> [F(I)|for(I + 1, Max, F)].
@@ -14,3 +14,6 @@ my_time_func(F) ->
     F,
     FinishedAt = erlang:system_time(millisecond),
     FinishedAt - StartedAt.
+
+perms([]) -> [[]];
+perms(L)  -> [[H|T] || H <- L, T <- perms(L--[H])].
