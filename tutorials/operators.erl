@@ -1,5 +1,11 @@
 -module(operators).
--export([test1/0, test2/0]).
+-export([test1/0, test2/0, test3/0]).
+
+test3() ->
+    io:fwrite("~w~n", [00111100 band 00001101]),
+    io:fwrite("~w~n", [00111100 bxor 00111100]),
+    io:fwrite("~w~n", [bnot 00111100]),
+    io:fwrite("~w~n", [00111100 bor 00111100]).
 
 test2() ->
     io:fwrite("~w~n", [true or false]),
